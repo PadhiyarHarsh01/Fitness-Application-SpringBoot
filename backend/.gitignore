@@ -19,7 +19,7 @@ logs/
 .env
 
 # Spring Boot secrets
-src/main/resources/application.yml
+src/main/resources/application.yaml
 
 # Application secrets
 application-prod.properties
