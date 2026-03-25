@@ -21,11 +21,11 @@ services:
       mysql:
         condition: service_started
     environment:
-      DB_URL: jdbc:mysql://mysql:3306/fittrack
-      DB_USERNAME: ${DB_USERNAME}
-      DB_PASSWORD: ${DB_PASSWORD}
-      JWT_TOKEN: ${JWT_SECRET}
-      GEMINI_APIKEY: ${GEMINI_API_KEY}
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/fittrack
+      SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET}
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
 
   frontend:
     build: ./client
