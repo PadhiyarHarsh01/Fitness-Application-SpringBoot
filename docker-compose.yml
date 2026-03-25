@@ -20,14 +20,12 @@ services:
     depends_on:
       mysql:
         condition: service_started
-    ports:
-      - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/fittrack
-      SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}
-      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
-      JWT_SECRET: ${JWT_SECRET}
-      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      DB_URL: jdbc:mysql://mysql:3306/fittrack
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      JWT_TOKEN: ${JWT_SECRET}
+      GEMINI_APIKEY: ${GEMINI_API_KEY}
 
   frontend:
     build: ./client
@@ -36,7 +34,7 @@ services:
     depends_on:
       - backend
     ports:
-      - "3000:80"
+      - "80:80"
 
 volumes:
   mysql_data:
