@@ -1,6 +1,9 @@
 #spring:
 #  application:
 #    name: FitTrackBackend
+
+## Make resources/application.yaml file for run, springboot backend folder
+
 server:
   port: 8080
 

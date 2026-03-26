@@ -39,8 +39,8 @@ public class JwtUtil {
 
     public boolean isTokenValid(String token) {
         try {
-            getClaims(token);
-            return true;
+            Claims claims = getClaims(token);
+            return claims.getExpiration().after(new Date());
         } catch (JwtException | IllegalArgumentException e) {
             return false;
         }
