@@ -1,6 +1,7 @@
 package com.fittrack.backend.controller;
 
 import com.fittrack.backend.service.WaterService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,13 @@ public class WaterController {
     }
 
     @PostMapping("/add")
-    public void addGlass(Authentication auth) {
+    public ResponseEntity<?> addGlass(Authentication auth) {
+
+        if (auth == null) {
+            return ResponseEntity.status(401).body("Unauthorized");
+        }
         waterService.addGlass(auth.getName());
+
+        return ResponseEntity.ok("Water added");
     }
 }

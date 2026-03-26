@@ -20,12 +20,13 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   (error) => {
+    const url = error.config?.url;
     if (error.response?.status === 401) {
       removeToken();
       window.location.href = "/login";
     }
 
-    if (error.response?.status === 403) {
+    if (error.response?.status === 403 && (url.includes("/api/dashboard") || url.includes("/api/user"))) {
       window.dispatchEvent(new Event("profile-required"));
     }
     
